@@ -203,5 +203,111 @@ public final class DBAction{
 		return b;
 		
 	}
+
+	public boolean deleate(int gid, Goods n){
+		boolean b = false;
+		conn = DB.getconn();
+		String sql = "DELETE FROM goods WHERE GID=?";
+		
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,gid);
+			int rs = pstmt.executeUpdate();
+			if(rs > 0)
+			{
+				b = true;
+			}
+			
+		}catch (SQLException e){
+			e.printStackTrace();			
+		}finally{
+			DB.Close(pstmt,conn);
+		}
+		return b;
+		
+	}
+
+	public boolean deleate(int sid, SalesMan n){
+		boolean b = false;
+		conn = DB.getconn();
+		String sql = "DELETE FROM salesman WHERE SID=?";
+		
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,sid);
+			int rs = pstmt.executeUpdate();
+			if(rs > 0)
+			{
+				b = true;
+			}
+			
+		}catch (SQLException e){
+			e.printStackTrace();			
+		}finally{
+			DB.Close(pstmt,conn);
+		}
+		return b;
+		
+	}
+
+	public ArrayList<Goods> queryAll(Goods n) {
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		conn = DB.getconn();
+		String sql = "SELECT * FROM goods";
+		
+		try{
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int gid = rs.getInt("gid");
+				String gname = rs.getString("gname");
+				float gprice = rs.getFloat("gprice");
+				int gnum = rs.getShort("gnum");
+				
+				Goods goods=new Goods(gid, gname,gprice,gnum);
+				goodsList.add(goods);
+			}
+			
+		}catch (SQLException e){
+			e.printStackTrace();			
+		}finally{
+			DB.Close(pstmt,conn);
+		}
+		return goodsList;
+	}
+
+	public ArrayList<SalesMan> queryAll(SalesMan n) {
+		ArrayList<SalesMan> salesmanList = new ArrayList<SalesMan>();
+		conn = DB.getconn();
+		String sql = "SELECT * FROM salesman";
+		
+		try{
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int sid = rs.getInt("sid");
+				String sname = rs.getString("sname");
+				String spassword = rs.getString("spassword");
+				
+				SalesMan salesman=new SalesMan(sid,sname,spassword);
+				salesmanList.add(salesman);
+			}
+			
+		}catch (SQLException e){
+			e.printStackTrace();			
+		}finally{
+			DB.Close(pstmt,conn);
+		}
+		return salesmanList;
+	}
+	
+
+	
+	
+	
 }
 
