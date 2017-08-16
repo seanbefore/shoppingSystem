@@ -1,10 +1,10 @@
 package tools;
 import java.math.BigDecimal;
 
-//java 中简单类型不能精确计算，这个工具进行精确的浮点运算
+//java 提供了精确计算浮点数的方法
 
 public class FloatMath{
-	private static final int DEF_DIV_SCALE = 2;//默认除法运算精度
+	private static final int DEF_DIV_SCALE = 2;//除法暴力的小数精度
 	private FloatMath(){}
 	public static float add(float v1,float v2){
 		
@@ -19,7 +19,7 @@ public class FloatMath{
 		BigDecimal b1 = new BigDecimal(Float.toString(v1));
 		BigDecimal b2 = new BigDecimal(Float.toString(v2));
 		
-		return b1.substract(b2).floatValue();
+		return b1.subtract(b2).floatValue();
 	}
 	
 	public static float mul(float v1,float v2){
@@ -47,7 +47,7 @@ public class FloatMath{
 		
 		return b1.divide(b2,scale,BigDecimal.ROUND_HALF_UP).floatValue();
 	}
-	//四舍五入
+	//鍥涜垗浜斿叆
 	public static float round(float v1,int scale){
 		
 		if(scale < 0){

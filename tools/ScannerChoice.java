@@ -8,16 +8,17 @@ public class ScannerChoice{
 	
 	//保留两位的浮点数
 	public static float ScannerPrice(){
-		float price = 0.00;
+		float price = (float) 0.00;
 		do {
 			Scanner sc = new Scanner(System.in);
-			System.out.print("保留小数点后两位，输入：")；
+			System.out.print("保留小数点后两位，输入：");
 			String p = sc.next();
 			String pattern = "([1-9][0-9]*)\\.([0-9]{2}|[0]\\.([0-9]{2})";
-			if ( p.maches(pattern)){
+			if ( p.matches(pattern)){
 				price = Float.parseFloat(p);
+				break;
 			}else{
-				System.out.print("输入格式错误！")；
+				System.out.print("输入格式错误！");
 				continue;
 			}
 		}while(true);
@@ -25,48 +26,54 @@ public class ScannerChoice{
 	}
 	
 	//整数
-	public static float ScannerNum(){
+	public static int ScannerNum(){
 		int num = 0;
 		do {
 			Scanner sc = new Scanner(System.in);
-			System.out.print("输入整数：")；
+			System.out.print("是否继续（Y/N）：");
 			String p = sc.next();
 			String pattern = "[1-9][0-9]*";
-			if ( p.maches(pattern)){
+			if ( p.matches(pattern)){
 				num = Integer.parseInt(p);
+				break;
 			}else{
-				System.out.print("输入格式错误！")；
+				System.out.print("输入格式错误！");
 				continue;
 			}
 		}while(true);
-		return num;
+		return num ;
 	}
 	
 	//字符串
 	public static String ScannerString(){
 		Scanner sc = new Scanner(System.in);
-		System.out.print("输入字符串：")；
+		System.out.print("杈撳叆瀛楃涓诧細");
 		return sc.next();
 	}
 	
 	//输入Y 或 N
-	public static bool ScannerBool(){
-		
+	@SuppressWarnings("resource")
+	public static boolean ScannerBool(){
+		try{
 		do {
 			Scanner sc = new Scanner(System.in);
-			System.out.print("是否继续（Y/N）：")；
+			System.out.print("是否继续（Y/N）");
 			String p = sc.next();
 			String py = "[yY]";
 			String pn = "[nN]";
-			if ( p.maches(py)){
+			if ( p.matches(py)){
 				return true;
-			}elseif(p.maches(pn)){
+			}else if(p.matches(pn)){
 				return false;
 			}else{
-				System.out.print("输入格式错误！")；
+				System.out.print("输入格式错误！");
 				continue;
 			}
 		}while(true);
-		return num;
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.err.println(e);
+		}
+		return false;
 	}
 }
