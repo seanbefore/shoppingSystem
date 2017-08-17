@@ -305,7 +305,65 @@ public final class DBAction{
 		return salesmanList;
 	}
 	
-
+	public ArrayList<Goods> query(int key,Goods goods) {
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		conn = DB.getconn();
+		switch (key) {
+		case 1:
+			String sql = "SELECT * FROM goods WHERE gid=?";
+			try{
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, goods.getGid());
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					int gid = rs.getInt("gid");
+					String gname = rs.getString("gname");
+					float gprice = rs.getFloat("gprice");
+					int gnum = rs.getInt("gnum");
+					
+					Goods good=new Goods(gid, gname,gprice,gnum);
+					goodsList.add(good);
+				}
+			}catch (SQLException e){
+					e.printStackTrace();			
+				}finally{
+					DB.Close(pstmt,conn);
+				}
+			break;
+			
+		case 2:
+			String sql2 = "SELECT * FROM goods WHERE gid=?";
+			try{
+				
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, goods.getGname());
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					int gid = rs.getInt("gid");
+					String gname = rs.getString("gname");
+					float gprice = rs.getFloat("gprice");
+					int gnum = rs.getInt("gnum");
+					
+					Goods good=new Goods(gid, gname,gprice,gnum);
+					goodsList.add(good);
+				}
+			}catch (SQLException e){
+					e.printStackTrace();			
+				}finally{
+					DB.Close(pstmt,conn);
+				}
+			break;
+		default:
+			System.out.println("wrong option key for query.");
+			break;
+		}		
+		return goodsList;
+	}
 	
 	
 	
