@@ -47,7 +47,7 @@ public class ScannerChoice{
 	//字符串
 	public static String ScannerString(){
 		Scanner sc = new Scanner(System.in);
-		System.out.print("杈撳叆瀛楃涓诧細");
+		System.out.print("请输入选择：");
 		return sc.next();
 	}
 	
