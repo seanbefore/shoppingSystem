@@ -2,62 +2,62 @@ package tools;
 
 import java.util.Scanner;
 
-//ä»é”®ç›˜ä¸Šè·å–å­—ç¬¦ä¸²ï¼Œæ•°å­—ç­‰
+//´Ó¼üÅÌÉÏ¶ÁÈ¡ÄÚÈİ
 
 public class ScannerChoice{
 	
-	//ä¿ç•™ä¸¤ä½çš„æµ®ç‚¹æ•°
+	//¶ÁÈ¡¼Û¸ñ
 	public static float ScannerPrice(){
 		float price = (float) 0.00;
 		do {
 			Scanner sc = new Scanner(System.in);
-			System.out.print("ä¿ç•™å°æ•°ç‚¹åä¸¤ä½ï¼Œè¾“å…¥ï¼š");
+			System.out.print("ÊäÈë£¬±£ÁôĞ¡ÊıµãºóÁ½Î»£º");
 			String p = sc.next();
 			String pattern = "([1-9][0-9]*)\\.([0-9]{2}|[0]\\.([0-9]{2})";
 			if ( p.matches(pattern)){
 				price = Float.parseFloat(p);
 				break;
 			}else{
-				System.out.print("è¾“å…¥æ ¼å¼é”™è¯¯ï¼");
+				System.out.print("ÊäÈë´íÎó£¡");
 				continue;
 			}
 		}while(true);
 		return price;
 	}
 	
-	//æ•´æ•°
+	//¶ÁÕûÊı
 	public static int ScannerNum(){
 		int num = 0;
 		do {
 			Scanner sc = new Scanner(System.in);
-			System.out.print("æ˜¯å¦ç»§ç»­ï¼ˆY/Nï¼‰ï¼š");
+			System.out.print("ÊäÈëÕûÊı£º");
 			String p = sc.next();
 			String pattern = "[1-9][0-9]*";
 			if ( p.matches(pattern)){
 				num = Integer.parseInt(p);
 				break;
 			}else{
-				System.out.print("è¾“å…¥æ ¼å¼é”™è¯¯ï¼");
+				System.out.print("ÊäÈëÓĞÎó£¡");
 				continue;
 			}
 		}while(true);
 		return num ;
 	}
 	
-	//å­—ç¬¦ä¸²
+	//ÊäÈë×Ö·û´®
 	public static String ScannerString(){
 		Scanner sc = new Scanner(System.in);
-		System.out.print("è¯·è¾“å…¥é€‰æ‹©ï¼š");
+		System.out.print("ÊäÈë£º");
 		return sc.next();
 	}
 	
-	//è¾“å…¥Y æˆ– N
+	//ÊäÈë²¼¶ûÖµ
 	@SuppressWarnings("resource")
 	public static boolean ScannerBool(){
 		try{
 		do {
 			Scanner sc = new Scanner(System.in);
-			System.out.print("æ˜¯å¦ç»§ç»­ï¼ˆY/Nï¼‰");
+			System.out.print("ÊÇ·ñ¼ÌĞø½øĞĞ-µ±Ç°²Ù×÷:(Y/N)");
 			String p = sc.next();
 			String py = "[yY]";
 			String pn = "[nN]";
@@ -66,7 +66,7 @@ public class ScannerChoice{
 			}else if(p.matches(pn)){
 				return false;
 			}else{
-				System.out.print("è¾“å…¥æ ¼å¼é”™è¯¯ï¼");
+				System.out.print("ÊäÈëÓĞÎó£¡ÇëÖØĞÂÊäÈë.");
 				continue;
 			}
 		}while(true);
