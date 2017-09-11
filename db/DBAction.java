@@ -335,7 +335,7 @@ public final class DBAction{
 			break;
 			
 		case 2:
-			String sql2 = "SELECT * FROM goods WHERE gid=?";
+			String sql2 = "SELECT * FROM goods WHERE gname=?";
 			try{
 				
 				pstmt = conn.prepareStatement(sql2);
